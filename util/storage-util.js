@@ -5,7 +5,7 @@ export default {
         localStorage.setItem(k, v)
         window.name = JSON.stringify({...JsonUtil.parseObject(window.name), k: v});
     },
-    get() {
+    get(k) {
         return localStorage.getItem(k) || JsonUtil.parseObject(window.name)[k];
     },
     remove() {
