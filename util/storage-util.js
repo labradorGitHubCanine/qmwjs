@@ -10,7 +10,7 @@ export default {
     },
     remove() {
         localStorage.removeItem(k);
-        window.name = JSON.stringify({...JsonUtil.parseObject(window.name), k: null});
+        window.name = JSON.stringify({...JsonUtil.parseObject(window.name), k: ''});
     },
     clear() {
         localStorage.clear();
