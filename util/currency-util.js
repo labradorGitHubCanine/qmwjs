@@ -1,5 +1,12 @@
 import NumberUtil from './number-util'
 
+/**
+ * 返回一个数字的货币格式
+ * 每3位加一个逗号
+ * @param number
+ * @param fixed 保留几位小数
+ * @returns {string}
+ */
 function format(number, fixed = 2) {
     if (!NumberUtil.isNumber(number))
         return ''
