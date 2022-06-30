@@ -35,12 +35,12 @@ export default {
      * 返回一个数字的货币格式
      * 每3位加一个逗号
      * @param number
-     * @param fixed 保留几位小数
      * @returns {string}
      */
-    currency(number, fixed) {
+    currency(number) {
         if (!this.isNumber(number))
             return ''
+        let fixed = arguments[1]
         if (!this.isNumber(fixed))
             fixed = 2
         fixed = Math.max(fixed, 0)
