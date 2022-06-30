@@ -43,6 +43,7 @@ export default {
             return ''
         if (!this.isNumber(fixed))
             fixed = 2
+        fixed = Math.max(fixed, 0)
         let num = Math.trunc(Math.abs(number)).toString(), result = ''
         while (num.length > 3) {
             result = ',' + num.slice(-3) + result
@@ -50,6 +51,7 @@ export default {
         }
         if (num) result = num + result
         if (number < 0) result = '-' + result
-        return result + '.' + (+number).toFixed(fixed).split('.')[1]
+        if (fixed > 0) result = result + '.' + (+number).toFixed(fixed).split('.')[1]
+        return result
     }
 }
