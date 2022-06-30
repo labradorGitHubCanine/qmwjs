@@ -30,5 +30,26 @@ export default {
      */
     summation(array = [], field) {
         return array.reduce((p, c) => p + this.ifNaN(c[field], 0), 0)
+    },
+    /**
+     * 返回一个数字的货币格式
+     * 每3位加一个逗号
+     * @param number
+     * @param fixed 保留几位小数
+     * @returns {string}
+     */
+    currency(number, fixed) {
+        if (!this.isNumber(number))
+            return ''
+        if (!this.isNumber(fixed))
+            fixed = 2
+        let num = Math.trunc(Math.abs(number)).toString(), result = ''
+        while (num.length > 3) {
+            result = ',' + num.slice(-3) + result
+            num = num.slice(0, num.length - 3)
+        }
+        if (num) result = num + result
+        if (number < 0) result = '-' + result
+        return result + '.' + (+number).toFixed(fixed).split('.')[1]
     }
 }
