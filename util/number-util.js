@@ -45,6 +45,20 @@ export default {
         return this.isNumber(number) ? +number : substitute
     },
     /**
+     * 返回一个增长值
+     * 例如增长率为22%，则返回22
+     * @param nval
+     * @param oval
+     * @param fixed
+     * @returns {string}
+     */
+    increment(nval, oval, fixed = 2) {
+        let increase = (nval - oval) * 100 / Math.abs(oval)
+        if (this.isNumber(increase))
+            return increase.toFixed(fixed)
+        return ''
+    },
+    /**
      * 判断是否为数字
      * 只有真正意义上的数字才会返回true
      * 空字符串、无穷或其它可以强转数字的对象不会判定为数字
