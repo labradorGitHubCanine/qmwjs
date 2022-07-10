@@ -49,14 +49,18 @@ export default {
      * 例如增长率为22%，则返回22
      * @param nval
      * @param oval
-     * @param fixed
      * @returns {string}
      */
-    increment(nval, oval, fixed = 2) {
+    increment(nval, oval) {
         let increase = (nval - oval) * 100 / Math.abs(oval)
-        if (this.isNumber(increase))
-            return increase.toFixed(fixed)
-        return ''
+        return this.isNumber(increase) ? increase : ''
+    },
+    incrementWithSymbol(nval, oval, fixed = 2) {
+        let increment = this.increment(nval, oval)
+        if (!this.isNumber(increment)) return ''
+        let a = increment.toFixed(fixed) + '%'
+        if (increment >= 0) a = '+' + a
+        return a
     },
     /**
      * 判断是否为数字
