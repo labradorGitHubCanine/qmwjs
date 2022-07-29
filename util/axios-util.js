@@ -6,12 +6,12 @@
 export default {
     serialize(config) {
         if (config.headers['Content-Type'] !== 'multipart/form-data') {
-            let params = new URLSearchParams()
+            const params = new URLSearchParams()
             let key = 'params'
             if (['post', 'put'].includes(config.method)) key = 'data'
-            for (let k in config[key] || {}) {
-                let value = config[key][k]
-                if (![undefined, null].includes(value))
+            for (const k in config[key] || {}) {
+                const value = config[key][k]
+                if (![undefined, null, NaN, Infinity, -Infinity].includes(value))
                     params.append(k, value)
             }
             config[key] = params
