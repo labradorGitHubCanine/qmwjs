@@ -4,7 +4,7 @@ export default {
      * 全部为非数字则返回空字符串
      */
     add() {
-        let numbers = []
+        const numbers = []
         for (let argument of arguments)
             numbers.push(argument)
         if (numbers.every(e => !this.isNumber(e)))
@@ -70,7 +70,7 @@ export default {
      * @returns {boolean}
      */
     isNumber(number) {
-        let e = String(number).trim()
+        const e = String(number).trim()
         return e !== '' && isFinite(+e) && !isNaN(+e)
     },
     /**
