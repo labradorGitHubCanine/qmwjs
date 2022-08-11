@@ -7,8 +7,6 @@ export default {
         const numbers = []
         for (let argument of arguments)
             numbers.push(argument)
-        if (numbers.every(e => !this.isNumber(e)))
-            return ''
         return numbers.reduce((p, c) => p + this.ifNaN(c, 0), 0)
     },
     /**
