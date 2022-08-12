@@ -72,6 +72,17 @@ export default {
         return e !== '' && isFinite(+e) && !isNaN(+e)
     },
     /**
+     * 判断是否全是数字
+     */
+    allNumbers() {
+        if (arguments.length === 0)
+            return false
+        for (let argument of arguments)
+            if (!this.isNumber(argument))
+                return false
+        return true
+    },
+    /**
      * 2022-06-28
      * 根据由对象组成的数组中的某个属性求和
      * 若元素不是对象或对象中该字段不是数字则该次循环累加值视为0
