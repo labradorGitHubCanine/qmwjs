@@ -3,7 +3,7 @@ export default {
      * n个数字相加，非数字视为0
      * 全部为非数字则返回空字符串
      */
-    add() {
+    'add'() {
         const numbers = []
         for (let argument of arguments)
             numbers.push(argument)
@@ -15,7 +15,7 @@ export default {
      * @param number
      * @returns {string}
      */
-    currency(number) {
+    'currency'(number) {
         if (!this.isNumber(number))
             return ''
         let fixed = arguments[1]
@@ -39,7 +39,7 @@ export default {
      * @param substitute
      * @returns {number|*}
      */
-    ifNaN(number, substitute) {
+    'ifNaN'(number, substitute) {
         return this.isNumber(number) ? +number : substitute
     },
     /**
@@ -49,11 +49,11 @@ export default {
      * @param oval
      * @returns {string}
      */
-    increment(nval, oval) {
+    'increment'(nval, oval) {
         let increase = (nval - oval) * 100 / Math.abs(oval)
         return this.isNumber(increase) ? increase : ''
     },
-    incrementWithSymbol(nval, oval, fixed = 2) {
+    'incrementWithSymbol'(nval, oval, fixed = 2) {
         let increment = this.increment(nval, oval)
         if (!this.isNumber(increment)) return ''
         let a = increment.toFixed(fixed) + '%'
@@ -67,14 +67,14 @@ export default {
      * @param number
      * @returns {boolean}
      */
-    isNumber(number) {
+    'isNumber'(number) {
         const e = String(number).trim()
         return e !== '' && isFinite(+e) && !isNaN(+e)
     },
     /**
      * 判断是否全是数字
      */
-    allNumbers() {
+    'allNumbers'() {
         if (arguments.length === 0)
             return false
         for (let argument of arguments)
@@ -90,7 +90,7 @@ export default {
      * @param field 字段名
      * @returns {*}
      */
-    summation(array = [], field) {
+    'summation'(array = [], field) {
         return array.reduce((p, c) => p + this.ifNaN(c[field], 0), 0)
     },
 }

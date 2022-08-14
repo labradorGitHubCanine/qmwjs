@@ -4,7 +4,7 @@
  * 2022年7月19日, PM 05:16:35
  */
 export default {
-    serialize(config) {
+    'serialize'(config) {
         if (config.headers['Content-Type'] !== 'multipart/form-data') {
             const params = new URLSearchParams()
             let key = 'params'

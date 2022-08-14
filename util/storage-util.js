@@ -1,19 +1,26 @@
 import JsonUtil from './json-util'
 
 export default {
-    set(k, v) {
-        localStorage.setItem(k, v)
-        window.name = JSON.stringify({...JsonUtil.parseObject(window.name), k: v});
+    'set'(key, value) {
+        localStorage.setItem(key, value)
+        sessionStorage.setItem(key, value)
+        const o = JsonUtil.parseObject(window.name)
+        o[key] = value
+        window.name = JSON.stringify(o)
     },
-    get(k) {
-        return localStorage.getItem(k) || JsonUtil.parseObject(window.name)[k];
+    'get'(key) {
+        return localStorage.getItem(key) || sessionStorage.getItem(key) || JsonUtil.parseObject(window.name)[key]
     },
-    remove() {
-        localStorage.removeItem(k);
-        window.name = JSON.stringify({...JsonUtil.parseObject(window.name), k: ''});
+    'remove'(key) {
+        localStorage.removeItem(key)
+        sessionStorage.removeItem(key)
+        const o = JsonUtil.parseObject(window.name)
+        delete o[key]
+        window.name = JSON.stringify(o)
     },
-    clear() {
-        localStorage.clear();
-        window.name = "{}";
+    'clear'() {
+        localStorage.clear()
+        sessionStorage.clear()
+        window.name = '{}'
     }
 }

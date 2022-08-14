@@ -1,5 +1,5 @@
 export default {
-    isObject(o) {
+    'isObject'(o) {
         if (Object.prototype.toString.call(o) === '[object Object]')
             return true
         try {
@@ -8,7 +8,7 @@ export default {
             return false
         }
     },
-    isArray(o) {
+    'isArray'(o) {
         if (Object.prototype.toString.call(o) === '[object Array]')
             return true
         try {
@@ -17,12 +17,12 @@ export default {
             return false
         }
     },
-    parseObject(o) {
+    'parseObject'(o) {
         if (Object.prototype.toString.call(o) === '[object Object]')
             return o
         return this.isObject(o) ? JSON.parse(o) : {}
     },
-    parseArray(o) {
+    'parseArray'(o) {
         if (Object.prototype.toString.call(o) === '[object Array]')
             return o
         return this.isArray(o) ? JSON.parse(o) : []
