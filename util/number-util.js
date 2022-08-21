@@ -18,10 +18,7 @@ export default {
     'currency'(number) {
         if (!this.isNumber(number))
             return ''
-        let fixed = arguments[1]
-        if (!this.isNumber(fixed))
-            fixed = 2
-        fixed = Math.max(fixed, 0)
+        const fixed = Math.max(this.ifNaN(arguments[1], 2), 0)
         let num = Math.trunc(Math.abs(number)).toString(), result = ''
         while (num.length > 3) {
             result = ',' + num.slice(-3) + result
