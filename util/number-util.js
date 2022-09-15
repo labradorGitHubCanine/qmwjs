@@ -1,13 +1,21 @@
 export default {
     /**
      * n个数字相加，非数字视为0
-     * 全部为非数字则返回空字符串
      */
     'add'() {
         const numbers = []
-        for (let argument of arguments)
-            numbers.push(argument)
+        for (const arg of arguments)
+            numbers.push(arg)
         return numbers.reduce((p, c) => p + this.ifNaN(c, 0), 0)
+    },
+    /**
+     * n个数字相乘
+     */
+    'multiply'() {
+        const numbers = []
+        for (const arg of arguments)
+            numbers.push(arg)
+        return numbers.reduce((p, c) => p * this.ifNaN(c, 1), 1)
     },
     /**
      * 返回一个数字的货币格式
