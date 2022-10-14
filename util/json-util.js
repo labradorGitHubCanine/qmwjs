@@ -26,5 +26,11 @@ export default {
         if (Object.prototype.toString.call(o) === '[object Array]')
             return o
         return this.isArray(o) ? JSON.parse(o) : []
+    },
+    'optionalChaining'(o, chain) {
+        const chaining = String(chain).split('.')
+        for (const key of chaining)
+            o = o[key] || ''
+        return o
     }
 }
