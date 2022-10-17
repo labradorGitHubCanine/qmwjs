@@ -96,6 +96,6 @@ export default {
      * @returns {*}
      */
     'summation'(array = [], field) {
-        return array.reduce((p, c) => p + this.ifNaN(c[field], 0), 0)
+        return array.reduce((prev, curr) => prev + this.ifNaN(field ? curr[field] : curr, 0), 0)
     },
 }
