@@ -22,5 +22,6 @@ export default {
             }
             request[key] = params
         }
+        return request
     }
 }
