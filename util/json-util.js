@@ -27,7 +27,7 @@ export default {
             return o
         return this.isArray(o) ? JSON.parse(o) : []
     },
-    'optionalChaining'(o, chain) {
+    'optionalChaining'(o = {}, chain) {
         const chaining = String(chain).split('.')
         for (const key of chaining)
             o = o[key] || ''
