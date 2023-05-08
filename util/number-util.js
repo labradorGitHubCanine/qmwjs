@@ -27,6 +27,7 @@ export default {
         if (!this.isNumber(number))
             return ''
         const fixed = Math.max(this.ifNaN(arguments[1], 2), 0)
+        number = this.ifNaN(number, 0).toFixed(fixed)
         let num = Math.trunc(Math.abs(number)).toString(), result = ''
         while (num.length > 3) {
             result = ',' + num.slice(-3) + result
